@@ -5,9 +5,13 @@ class Cube
       @window   = window
       @image    = Gosu::Image.new('square.png')
       @font     = Gosu::Font.new(48)
+      reset(4)
+   end
+
+   def reset(size)
       @pixels   = 25
-      @size     = 4
-      @max      = @size-1
+      @size     = size
+      @max      = size-1
       @margin   = 10
       @xpos     = 200
       @ypos     = 200
@@ -19,16 +23,16 @@ class Cube
       #     4
       #
       @positions = []
-      @positions << {x:@xpos,                            y:@ypos}
-      @positions << {x:@xpos,                            y:@ypos - (@size*@pixels + @margin)}
+      @positions << {x:@xpos,                               y:@ypos}
+      @positions << {x:@xpos,                               y:@ypos - (@size*@pixels + @margin)}
       @positions << {x:@xpos - (@size*@pixels + @margin),   y:@ypos}
       @positions << {x:@xpos + (@size*@pixels + @margin),   y:@ypos}
-      @positions << {x:@xpos,                            y:@ypos + (@size*@pixels + @margin)}
+      @positions << {x:@xpos,                               y:@ypos + (@size*@pixels + @margin)}
       @positions << {x:@xpos + 2*(@size*@pixels + @margin), y:@ypos}
 
       @faces = []
       for i in 0..5
-         @faces << Face.new(window, @size, i)
+         @faces << Face.new(@window, @size, i)
       end
 
       @edges0 = make_edge_list(0)
@@ -116,8 +120,7 @@ class Cube
 
    def load(filename)
       f = File.open(filename, "r")
-      @size = f.gets.to_i
-      @max = @size-1
+      reset(f.gets.to_i)
       for i in 0..5
          @faces[i].load(f, @size)
       end
