@@ -8,6 +8,18 @@ class Cube
       reset(4)
    end
 
+   def increase
+      if @size < 7
+         reset(@size+1)
+      end
+   end
+
+   def decrease
+      if @size > 3
+         reset(@size-1)
+      end
+   end
+
    def reset(size)
       @pixels   = 25
       @size     = size

@@ -115,6 +115,10 @@ class GameWindow < Gosu::Window
          @cube.save(@filename)
       when Gosu::KbL
          @cube.load(@filename)
+      when Gosu::KbI
+         @cube.increase
+      when Gosu::KbD
+         @cube.decrease
       when Gosu::MsLeft
          @cube.mouse(mouse_x, mouse_y, @square.colour)
          @square.mouse(mouse_x, mouse_y)
