@@ -36,59 +36,59 @@ class Cube
 
       # 24 corner pieces (incl rotations)
       @corners = []
-      @corners << [0,   0,   0,  1,   0, @max,  2, @max,   0]
-      @corners << [0,   0, @max,  2, @max, @max,  4,   0,   0]
-      @corners << [0, @max,   0,  3,   0,   0,  1, @max, @max]
-      @corners << [0, @max, @max,  4, @max,   0,  3,   0, @max]
-      @corners << [1,   0,   0,  5, @max,   0,  2,   0,   0]
-      @corners << [1,   0, @max,  2, @max,   0,  0,   0,   0]
-      @corners << [1, @max,   0,  3, @max,   0,  5,   0,   0]
-      @corners << [1, @max, @max,  0, @max,   0,  3,   0,   0]
-      @corners << [2,   0,   0,  1,   0,   0,  5, @max,   0]
-      @corners << [2,   0, @max,  5, @max, @max,  4,   0, @max]
-      @corners << [2, @max,   0,  0,   0,   0,  1,   0, @max]
-      @corners << [2, @max, @max,  4,   0,   0,  0,   0, @max]
-      @corners << [3,   0,   0,  1, @max, @max,  0, @max,   0]
-      @corners << [3,   0, @max,  0, @max, @max,  4, @max,   0]
-      @corners << [3, @max,   0,  5,   0,   0,  1, @max,   0]
-      @corners << [3, @max, @max,  4, @max, @max,  5,   0, @max]
-      @corners << [4,   0,   0,  0,   0, @max,  2, @max, @max]
-      @corners << [4,   0, @max,  2,   0, @max,  5, @max, @max]
-      @corners << [4, @max,   0,  3,   0, @max,  0, @max, @max]
-      @corners << [4, @max, @max,  5,   0, @max,  3, @max, @max]
-      @corners << [5,   0,   0,  1, @max,   0,  3, @max,   0]
-      @corners << [5,   0, @max,  3, @max, @max,  4, @max, @max]
-      @corners << [5, @max,   0,  2,   0,   0,  1,   0,   0]
-      @corners << [5, @max, @max,  4,   0, @max,  2,   0, @max]
+      @corners << [0,    0,    0,   1,    0, @max,   2, @max,    0]
+      @corners << [0,    0, @max,   2, @max, @max,   4,    0,    0]
+      @corners << [0, @max,    0,   3,    0,    0,   1, @max, @max]
+      @corners << [0, @max, @max,   4, @max,    0,   3,    0, @max]
+      @corners << [1,    0,    0,   5, @max,    0,   2,    0,    0]
+      @corners << [1,    0, @max,   2, @max,    0,   0,    0,    0]
+      @corners << [1, @max,    0,   3, @max,    0,   5,    0,    0]
+      @corners << [1, @max, @max,   0, @max,    0,   3,    0,    0]
+      @corners << [2,    0,    0,   1,    0,    0,   5, @max,    0]
+      @corners << [2,    0, @max,   5, @max, @max,   4,    0, @max]
+      @corners << [2, @max,    0,   0,    0,    0,   1,    0, @max]
+      @corners << [2, @max, @max,   4,    0,    0,   0,    0, @max]
+      @corners << [3,    0,    0,   1, @max, @max,   0, @max,    0]
+      @corners << [3,    0, @max,   0, @max, @max,   4, @max,    0]
+      @corners << [3, @max,    0,   5,    0,    0,   1, @max,    0]
+      @corners << [3, @max, @max,   4, @max, @max,   5,    0, @max]
+      @corners << [4,    0,    0,   0,    0, @max,   2, @max, @max]
+      @corners << [4,    0, @max,   2,    0, @max,   5, @max, @max]
+      @corners << [4, @max,    0,   3,    0, @max,   0, @max, @max]
+      @corners << [4, @max, @max,   5,    0, @max,   3, @max, @max]
+      @corners << [5,    0,    0,   1, @max,    0,   3, @max,    0]
+      @corners << [5,    0, @max,   3, @max, @max,   4, @max, @max]
+      @corners << [5, @max,    0,   2,    0,    0,   1,    0,    0]
+      @corners << [5, @max, @max,   4,    0, @max,   2,    0, @max]
    end
 
    def make_edge_list(i)
       j = @max-i
       edges = []
-      edges << [0,   0,   j,  2, @max,   j]
-      edges << [0,   i,   0,  1,   i, @max]
-      edges << [0,   j, @max,  4,   j,   0]
-      edges << [0, @max,   i,  3,   0,   i]
-      edges << [1,   0,   j,  2,   j,   0]
-      edges << [1,   i,   0,  5,   j,   0]
-      edges << [1,   j, @max,  0,   j,   0]
-      edges << [1, @max,   i,  3,   j,   0]
-      edges << [2,   0,   j,  5, @max,   j]
-      edges << [2,   i,   0,  1,   0,   i]
-      edges << [2,   j, @max,  4,   0,   i]
-      edges << [2, @max,   i,  0,   0,   i]
-      edges << [3,   0,   j,  0, @max,   j]
-      edges << [3,   i,   0,  1, @max,   j]
-      edges << [3,   j, @max,  4, @max,   j]
-      edges << [3, @max,   i,  5,   0,   i]
-      edges << [4,   0,   j,  2,   i, @max]
-      edges << [4,   i,   0,  0,   i, @max]
-      edges << [4,   j, @max,  5,   i, @max]
-      edges << [4, @max,   i,  3,   i, @max]
-      edges << [5,   0,   j,  3, @max,   j]
-      edges << [5,   i,   0,  1,   j,   0]
-      edges << [5,   j, @max,  4,   i, @max]
-      edges << [5, @max,   i,  2,   0,   i]
+      edges << [0,    0,    j,   2, @max,    j]
+      edges << [0,    i,    0,   1,    i, @max]
+      edges << [0,    j, @max,   4,    j,    0]
+      edges << [0, @max,    i,   3,    0,    i]
+      edges << [1,    0,    j,   2,    j,    0]
+      edges << [1,    i,    0,   5,    j,    0]
+      edges << [1,    j, @max,   0,    j,    0]
+      edges << [1, @max,    i,   3,    j,    0]
+      edges << [2,    0,    j,   5, @max,    j]
+      edges << [2,    i,    0,   1,    0,    i]
+      edges << [2,    j, @max,   4,    0,    i]
+      edges << [2, @max,    i,   0,    0,    i]
+      edges << [3,    0,    j,   0, @max,    j]
+      edges << [3,    i,    0,   1, @max,    j]
+      edges << [3,    j, @max,   4, @max,    j]
+      edges << [3, @max,    i,   5,    0,    i]
+      edges << [4,    0,    j,   2,    i, @max]
+      edges << [4,    i,    0,   0,    i, @max]
+      edges << [4,    j, @max,   5,    i, @max]
+      edges << [4, @max,    i,   3,    i, @max]
+      edges << [5,    0,    j,   3, @max,    j]
+      edges << [5,    i,    0,   1,    j,    0]
+      edges << [5,    j, @max,   4,    i, @max]
+      edges << [5, @max,    i,   2,    0,    i]
 
       return edges
    end
@@ -107,6 +107,7 @@ class Cube
 
    def save(filename)
       f = File.open(filename, "w")
+      f.write("#{@size}")
       for i in 0..5
          @faces[i].save(f)
       end
@@ -115,8 +116,10 @@ class Cube
 
    def load(filename)
       f = File.open(filename, "r")
+      @size = f.gets.to_i
+      @max = @size-1
       for i in 0..5
-         @faces[i].load(f)
+         @faces[i].load(f, @size)
       end
       f.close()
    end

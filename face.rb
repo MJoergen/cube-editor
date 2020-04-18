@@ -31,7 +31,10 @@ class Face
       f.write("\n")
    end
 
-   def load(f)
+   def load(f, size)
+      @size   = size
+      @max    = size-1
+      @pieces = [6]*(@size*@size)
       for y in 0..@max
          line = f.gets
          for x in 0..@max
