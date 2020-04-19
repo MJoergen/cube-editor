@@ -5,7 +5,7 @@ class Cube
       @window   = window
       @image    = Gosu::Image.new('square.png')
       @font     = Gosu::Font.new(48)
-      reset(4)
+      reset(3)
    end
 
    def increase
@@ -125,7 +125,7 @@ class Cube
 
    def save(filename)
       f = File.open(filename, "w")
-      f.write("#{@size}")
+      f.write("#{@size}\n")
       for i in 0..5
          @faces[i].save(f)
       end

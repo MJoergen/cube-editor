@@ -1,6 +1,8 @@
 # cube-editor
 Make your own patterns on an arbitrary-sized Rubiks cube.
 
+This program supports sizes from 3x3x3 up to 7x7x7.
+
 ## Usage
 ```
 ./main.rb [filename]
