@@ -12,7 +12,7 @@ class GameWindow < Gosu::Window
 
    def initialize(filename)
       super(1300, 600, false)
-      self.caption = 'Cube Colouring'
+      self.caption = 'Cube Editor'
 
       @filename = filename
       @cube     = Cube.new(self)
@@ -35,8 +35,8 @@ class GameWindow < Gosu::Window
          '.' => Gosu::Color.argb(0xff_004000)  # Dark Green
       }
 
-      @colour_index = 0
-      @colour_map = [   # 24 possible orientations of the colours.
+      @palette_index = 0
+      @palette = [   # 24 possible orientations of the colours.
          "BOWYRG.",
          "BRYWOG.",
          "BWROYG.",
@@ -61,10 +61,10 @@ class GameWindow < Gosu::Window
          "YGORBW.",
          "YOBGRW.",
          "YRGBOW."]
-   end
+   end # initialize
 
    def get_col(col)
-      return @colour[@colour_map[@colour_index][col]]
+      return @colour[@palette[@palette_index][col]]
    end
 
    def needs_cursor?
@@ -86,45 +86,48 @@ class GameWindow < Gosu::Window
       @font.draw_text("   C  : Clear board",                               800, 110, 0)
       @font.draw_text("   S  : Save to #{@filename}",                      800, 140, 0)
       @font.draw_text("   L  : Load from #{@filename}",                    800, 170, 0)
-      @font.draw_text("   N  : Change colour index (#{@colour_index})",    800, 200, 0)
-      @font.draw_text("Use left mouse button to change individual tiles.", 800, 230, 0)
-      @font.draw_text("Click on large tile to change default colour.",     800, 260, 0)
-      @font.draw_text("Use arrow keys to turn entire cube.",               800, 290, 0)
+      @font.draw_text("   P  : Change palette index (#{@palette_index})",  800, 200, 0)
+      @font.draw_text("   I  : Increase cube size",                        800, 230, 0)
+      @font.draw_text("   D  : Decrease cube size",                        800, 260, 0)
+      @font.draw_text("Use left mouse button to change individual tiles.", 800, 290, 0)
+      @font.draw_text("Click on large tile to change default colour.",     800, 320, 0)
+      @font.draw_text("Use arrow keys to turn entire cube.",               800, 350, 0)
    end
 
    # This checks when you press ESC
    def button_down(id)
       case id
-      when Gosu::KbEscape
-         close
-      when Gosu::KbLeft
-         @cube.left
-      when Gosu::KbRight
-         @cube.right
-      when Gosu::KbUp
-         @cube.up
-      when Gosu::KbDown
-         @cube.down
-      when Gosu::KbF
-         @cube.full
-      when Gosu::KbC
-         @cube.clear
-      when Gosu::KbN
-         @colour_index = (@colour_index + 1) % 24
-      when Gosu::KbS
-         @cube.save(@filename)
-      when Gosu::KbL
-         @cube.load(@filename)
-      when Gosu::KbI
-         @cube.increase
-      when Gosu::KbD
-         @cube.decrease
-      when Gosu::MsLeft
-         @cube.mouse(mouse_x, mouse_y, @square.colour)
-         @square.mouse(mouse_x, mouse_y)
+         when Gosu::KbEscape
+            close
+         when Gosu::KbLeft
+            @cube.left
+         when Gosu::KbRight
+            @cube.right
+         when Gosu::KbUp
+            @cube.up
+         when Gosu::KbDown
+            @cube.down
+         when Gosu::KbF
+            @cube.full
+         when Gosu::KbC
+            @cube.clear
+         when Gosu::KbP
+            @palette_index = (@palette_index + 1) % 24
+         when Gosu::KbS
+            @cube.save(@filename)
+         when Gosu::KbL
+            @cube.load(@filename)
+         when Gosu::KbI
+            @cube.increase
+         when Gosu::KbD
+            @cube.decrease
+         when Gosu::MsLeft
+            @cube.mouse(mouse_x, mouse_y, @square.colour)
+            @square.mouse(mouse_x, mouse_y)
       end
-   end
-end
+   end #button_down
+
+end #GameWindow
 
 window = GameWindow.new(ARGV[0])
 window.show
