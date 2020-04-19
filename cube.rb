@@ -47,8 +47,10 @@ class Cube
          @faces << Face.new(@window, @size, i)
       end
 
-      @edges0 = make_edge_list(0)
-      @edges1 = make_edge_list(1)
+      @edges = []
+      for i in 0..(@size+1)/2
+         @edges << make_edge_list(i)
+      end
 
       # 24 corner pieces (incl rotations)
       @corners = []
@@ -242,8 +244,9 @@ class Cube
 
    def legal?
       errors  = check_faces
-      errors += check_edges(@edges0)
-      errors += check_edges(@edges1)
+      for i in 0..(@size+1)/2
+         errors += check_edges(@edges[i])
+      end
       errors += check_corners
 
       return (errors == 0)

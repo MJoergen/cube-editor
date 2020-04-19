@@ -7,12 +7,14 @@ class Face
       @max    = size-1
       @id     = j
 
-      # Initialize colour placement
-      @pieces = [6]*(@size*@size)
+      clear
    end
 
    def clear
       @pieces = [6]*(@size*@size)
+      if @size % 2 == 1
+         @pieces[(@size*@size)/2] = @id
+      end
    end
 
    def full
